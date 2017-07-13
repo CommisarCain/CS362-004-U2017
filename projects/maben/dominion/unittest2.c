@@ -1,4 +1,4 @@
-// Test compare function in dominion.c
+// Test kingdom function in dominion.c
 
 
 #include "dominion.h"
@@ -9,8 +9,8 @@
 
 #define TEST_COUNT 1
 #define TARGET_FILE "unittestresults.out"
-#define TEST_FAIL "unittest1 FAILED"
-#define TEST_PASS "unittest1 PASSED"
+#define TEST_FAIL "unittest2 FAILED"
+#define TEST_PASS "unittest2 PASSED"
 
 //make constant for amount of tests
 
@@ -25,7 +25,7 @@ void printReport(struct TestResults* test){
 
   fp = fopen(TARGET_FILE, "a");
   for (int i = 0; i < TEST_COUNT; i++) {
-    fprintf(fp, "unittest1 Test %d : %d\n", i, test->result_array[i]);
+    fprintf(fp, "unittest2 Test %d : %d\n", i, test->result_array[i]);
     score = score + test->result_array[i];
   }
   fclose(fp);
@@ -38,28 +38,16 @@ void printReport(struct TestResults* test){
 }
 
 int testInt(){
-  char* a = "a";
-  char* b = "b";
-  int* c;
-  int* d;
-  int add = 2;
-  int add2 = 3;
-  int result = 0;
 
-  c = &add;
-  d = &add2;
-
-  result = result + compare(d,c);
-  result = result + compare(c,d);
-  result = result + compare(d,c);
-  result = result + compare(a,b);
-  result = result + compare(b,a);
-
-  if(result == 1){
-    return result;
-  }else{
-    return 0;
-  }
+  int* point = kingdomCards(0,0,0,0,0,0,0,0,0,0);
+  for (int i = 0; i < 10; i++ ) {
+    if (*(point+i) != 0) {
+      free(point);
+      return 0;
+    }
+   }
+  free(point);
+  return 1;
 
 }
 
