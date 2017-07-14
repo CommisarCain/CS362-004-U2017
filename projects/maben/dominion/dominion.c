@@ -651,7 +651,7 @@ int adventurerCardEffect(struct gameState *state, int currentPlayer, int handPos
 
   int tributeRevealedCards[2] = {-1, -1};
   int temphand[MAX_HAND];// moved above the if statement
-  int drawntreasure=0;
+  int drawntreasure = 0;
   int cardDrawn;
   int z = 0;// this is the counter for the temp hand
   if (nextPlayer > (state->numPlayers - 1)){

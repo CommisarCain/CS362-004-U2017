@@ -1,4 +1,4 @@
-// Test initializeGame function in dominion.c
+// Test getCost function in dominion.c
 
 
 #include "dominion.h"
@@ -39,22 +39,13 @@ void printReport(struct TestResults* test){
 
 int testInt(){
 
-  int* point = kingdomCards(0,1,2,3,4,5,6,7,8,9);
-  struct gameState game;
-  struct gameState* gamep = &game;
-  int players = 2;
-  int seed = 55;
-  int result1 = initializeGame(players, point, seed, gamep);
-  players = 1;
-  int result2 = initializeGame(players, point, seed, gamep);
-  point = kingdomCards(0,0,0,0,0,0,0,0,0,0);
-  players = 2;
-  int result3 = initializeGame(players, point, seed, gamep);
-  players = 4;
-  point = kingdomCards(0,1,2,3,4,5,6,7,8,9);
-  int result4 = initializeGame(players, point, seed, gamep);
-  players = 2;
-  if(result1 == 0 && result2 == -1 && result3 == -1, result4 == 0){
+
+  int result1 = getCost(curse);
+  int result2 = getCost(100);
+  int result3 = getCost(-1);
+  int result4 = getCost(province);
+
+  if(result1 == 0 && result2 == -1 && result3 == -1 && result4 == 8){
     return 1;
   }
   return 0;
