@@ -70,7 +70,7 @@ int testInt(){
 
   printf("%d  %d\n", count1, count2);
 
-  if(count2 > count1){
+  if(count2 == count1+3){
     result3 = 1;
   }
 

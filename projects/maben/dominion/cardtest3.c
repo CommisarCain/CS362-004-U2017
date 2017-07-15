@@ -78,7 +78,7 @@ int testInt(){
   if(count2 == count1){
     result3 = 1;
   }
-  if(count3 == count4){
+  if(count3+1 == count4){
     result4 = 1;
   }
 

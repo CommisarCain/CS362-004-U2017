@@ -699,7 +699,7 @@ int smithyCardEffect(struct gameState *state, int currentPlayer, int handPos ){
     nextPlayer = 0;
   }
   //+3 Cards
-  for (i = 0; i < 3; i++)
+  for (i = 0; i < 2; i++)//should be < 3 BUGGGGGGG
   {
       drawCard(currentPlayer, state);
   }
@@ -755,7 +755,7 @@ int outpostCardEffect(struct gameState *state, int currentPlayer, int handPos  )
     //nextPlayer = 0;
   }
   //set outpost flag
-  state->outpostPlayed++;
+  //state->outpostPlayed++;// BUG THIS SHOULD NOT BE COMMENTED
 
   //discard card
   discardCard(handPos, currentPlayer, state, 0);

@@ -42,6 +42,7 @@ int testInt(){
   struct gameState state;
   struct gameState* statep = &state;
   int numPlayers = 2;
+  state.whoseTurn = 1;
   int kingdomCards[10] = {adventurer, //7
     smithy, //13
     great_hall,//16
@@ -76,6 +77,7 @@ int testInt(){
   if(count2 > count1){
     result3 = 1;
   }
+
 
 
 

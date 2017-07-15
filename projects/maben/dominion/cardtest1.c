@@ -89,7 +89,7 @@ int testInt(){
 
 
 
-  if(result1 == 0 && result2 == 1 && result3 == 1 && result4 == 0){
+  if(result1 == 0 && result2 == 0 && result3 == 1 && result4 == 0){
     return 1;
   }
   return 0;
