@@ -684,20 +684,6 @@ int adventurerCardEffect(struct gameState *state, int currentPlayer, int handPos
 
 int smithyCardEffect(struct gameState *state, int currentPlayer, int handPos ){
   int i;
-  int j;
-  int k;
-  int x;
-  int index;
-  int nextPlayer = currentPlayer + 1;
-
-  int tributeRevealedCards[2] = {-1, -1};
-  int temphand[MAX_HAND];// moved above the if statement
-  int drawntreasure=1;
-  int cardDrawn;
-  int z = 0;// this is the counter for the temp hand
-  if (nextPlayer > (state->numPlayers - 1)){
-    nextPlayer = 0;
-  }
   //+3 Cards
   for (i = 0; i < 2; i++)//should be < 3 BUGGGGGGG
   {
