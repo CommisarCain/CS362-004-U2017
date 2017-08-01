@@ -1,0 +1,38 @@
+
+	* Refactoring Notes
+	* 
+		* Rename all methods used in card tests to reflect refactored names
+		* 
+			* 1 per file, not too bad
+
+		* Edit card effect calls to only have correct argument(s) (state and state+handpos)
+		* 
+			* 1 per file
+
+
+	* Bug Reports
+	* 
+		* Ran Fine on adventurer and smithy card after tests
+		* Both card tests failed, all unit tests passed (non-card effect related)
+		* Card Test 1 Adventurer
+		* 
+			* Failed
+			* No longer causes 2 treasure cards to be drawn
+			* returns 1st 2 card drawn
+			* Extremely small portion of the time the card could function correctly, i.e. if the first 2 cards drawn are treasure cards
+			* bug has every card draw labeled as copper in function but could actually be any card
+			* line 679 in dominion.c
+			* found by checking if the state of the hand after function call contained 2 more treasure than previously
+
+		* Card Test 2 Smithy
+		* 
+			* Failed
+			* No longer returns with 3 cards having been drawn
+			* Only returns 2 cards
+			* Line 714 in dominion.c
+			* Function never performs correctly
+			* Found by checking if the quantity of cards in the hand was 3 more than prior to the function call
+
+
+
+
