@@ -44,7 +44,6 @@ int testInt(){
   struct gameState state;
   struct gameState* statep = &state;
   int numPlayers = 2;
-  //int* test;
   int kingdomCards[10] = {adventurer, //7
     smithy, //13
     great_hall,//16
@@ -69,7 +68,6 @@ int testInt(){
   int p;
 
   for (int n = 0; n < 2000; n++) {
-    //test = malloc(sizeof(int));
     for (int i = 0; i < sizeof(struct gameState); i++) {
       ((char*)&state)[i] = floor(Random() * 256);
     }

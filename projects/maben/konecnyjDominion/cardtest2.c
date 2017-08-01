@@ -6,13 +6,11 @@
 #include <string.h>
 #include <stdio.h>
 #include <assert.h>
-#include "rngs.h"
-#include <math.h>
 
 #define TEST_COUNT 1
-#define TARGET_FILE "randomtest.out"
-#define TEST_FAIL "randomcardtest1 FAILED"
-#define TEST_PASS "randomcardtest2 PASSED"
+#define TARGET_FILE "unittestresults.out"
+#define TEST_FAIL "cardtest2 FAILED"
+#define TEST_PASS "cardtest2 PASSED"
 
 //make constant for amount of tests
 
@@ -27,7 +25,7 @@ void printReport(struct TestResults* test){
 
   fp = fopen(TARGET_FILE, "a");
   for (int i = 0; i < TEST_COUNT; i++) {
-    fprintf(fp, "randomcardtest2 Test %d : %d\n", i, test->result_array[i]);
+    fprintf(fp, "cardtest2 Test %d : %d\n", i, test->result_array[i]);
     score = score + test->result_array[i];
   }
   fclose(fp);
@@ -44,7 +42,6 @@ int testInt(){
   struct gameState state;
   struct gameState* statep = &state;
   int numPlayers = 2;
-  //int* test;
   int kingdomCards[10] = {adventurer, //7
     smithy, //13
     great_hall,//16
@@ -59,51 +56,30 @@ int testInt(){
   int seed = 10;
   int count1 = 0;
   int count2 = 0;
-  int result1 = 0;
   int result2 = -1;
   int result3 = -1;
   int result4 = 0;
-  int finalresult = 1;
-  SelectStream(2);
-  PutSeed(3);
-  int p;
-
-  for (int n = 0; n < 2000; n++) {
-    //test = malloc(sizeof(int));
-    for (int i = 0; i < sizeof(struct gameState); i++) {
-      ((char*)&state)[i] = floor(Random() * 256);
-    }
-    p = floor(Random() * 2);
-    state.deckCount[p] = floor(Random() * MAX_DECK);
-    state.discardCount[p] = floor(Random() * MAX_DECK);
-    state.handCount[p] = floor(Random() * MAX_HAND);
 
 
-    result1 = initializeGame(numPlayers, kingdomCardsp, seed, statep);
-    count1 = state.handCount[1];
+  int result1 = initializeGame(numPlayers, kingdomCardsp, seed, statep);
+  count1 = state.handCount[1];
 
-    result2 = smithyCardEffect(statep,1,1);
+  result2 = playSmithy(statep,1);
 
-    count2 = state.handCount[1];
+  count2 = state.handCount[1];
 
-    //printf("%d  %d\n", count1, count2);
+  printf("%d  %d\n", count1, count2);
 
-    if(count2 == count1+3){
-      result3 = 1;
-    }
-
-
-
-
-    if(result1 != 0 || result2 != 0 || result3 != 1 || result4 != 0){
-      finalresult = 0;
-      break;
-    }
+  if(count2 == count1+3){
+    result3 = 1;
   }
-  if(finalresult == 1){
+
+
+
+
+  if(result1 == 0 && result2 == 0 && result3 == 1 && result4 == 0){
     return 1;
   }
-
   return 0;
 }
 
